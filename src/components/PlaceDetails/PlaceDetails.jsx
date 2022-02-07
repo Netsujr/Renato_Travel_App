@@ -3,12 +3,10 @@ import styled from 'styled-components';
 import useStyles from './styles';
 
 
-const PlaceDetails = () => {
+const PlaceDetails = ({place}) => {
   const classes = useStyles();
   return (
-    <div>
-      <h1>Details</h1>
-    </div>
+      <h1>{place.name}</h1>
   );
 };
 

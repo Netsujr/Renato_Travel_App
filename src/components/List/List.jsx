@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 // import styled from 'styled-components';
 import useStyles from './styles';
 import { CircularProgress, Grid, Typography, InputLabel, MenuItem, FormControl, Select } from '@material-ui/core';
-
+import PlaceDetails from '../PlaceDetails/PlaceDetails';
 
 const List = () => {
   const classes = useStyles();
@@ -12,6 +12,11 @@ const List = () => {
   const places = [
     {name: 'Pizza Hut', rating: 4.5, location: 'New York, NY', type: 'restaurants'},
     {name: 'McDonalds', rating: 4.5, location: 'New York, NY', type: 'restaurants'},
+    {name: 'Burger King', rating: 4.5, location: 'New York, NY', type: 'restaurants'},
+    {name: 'Pizza Hut', rating: 4.5, location: 'New York, NY', type: 'restaurants'},
+    {name: 'McDonalds', rating: 4.5, location: 'New York, NY', type: 'restaurants'},
+    {name: 'Burger King', rating: 4.5, location: 'New York, NY', type: 'restaurants'},
+
 ];
 
   return (
@@ -37,7 +42,7 @@ const List = () => {
       <Grid container spacing={3} className={classes.list}>
         {places?.map((place, i) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={i}>
-            {/* <CARD/> */}
+            <PlaceDetails place={place}/>
           </Grid>
 
         ))}
