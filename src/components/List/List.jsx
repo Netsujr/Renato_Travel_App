@@ -13,7 +13,7 @@ const List = ({ places }) => {
     <div className={classes.container}>
       <Typography variant="h6">Restaurants, Hotels & Attractions</Typography>
       <FormControl className={classes.formControl}>
-        <InputLabel>Type</InputLabel>
+        <InputLabel id='type' >Type</InputLabel>
         <Select id='type' value={type} onChange={(e) => setType(e.target.value)}>
           <MenuItem value="restaurants">Restaurants</MenuItem>
           <MenuItem value="hotels">Hotels</MenuItem>
@@ -21,7 +21,7 @@ const List = ({ places }) => {
         </Select>
       </FormControl>
       <FormControl className={classes.formControl}>
-        <InputLabel>Rating</InputLabel>
+        <InputLabel id="rating" >Rating</InputLabel>
         <Select id="rating" value={rating} onChange={(e) => setRating(e.target.value)}>
           <MenuItem value={0}>All</MenuItem>
           <MenuItem value={3}>Above 3.0</MenuItem>
@@ -31,10 +31,9 @@ const List = ({ places }) => {
       </FormControl>
       <Grid container spacing={3} className={classes.list}>
         {places?.map((place, i) => (
-          <Grid item key={i} xs={12}>
+          <Grid item xs={12} key={i}>
             <PlaceDetails place={place}/>
           </Grid>
-
         ))}
       </Grid>
     </div>
