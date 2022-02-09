@@ -7,7 +7,7 @@ import LocationOutinedIcon from '@material-ui/icons/LocationOnOutlined';
 import Rating from '@material-ui/lab/Rating';
 
 
-const Map = ({ setCoords, setBounds, coords, places }) => {
+const Map = ({ setCoords, setBounds, coords, places, setChildClicked }) => {
   const classes = useStyles();
   const isDesktop = useMediaQuery('(min-width:600px)');
 
@@ -26,7 +26,7 @@ const Map = ({ setCoords, setBounds, coords, places }) => {
           setCoords({ lat: e.center.lat, lng: e.center.lng });
           setBounds({ ne: e.marginBounds.ne, sw: e.marginBounds.sw });
         }}
-        onChildClick={() => { '' }}
+        onChildClick={(child) => setChildClicked(click)}
       >
         {places?.map((place, i) => (
           <div
@@ -50,16 +50,16 @@ const Map = ({ setCoords, setBounds, coords, places }) => {
                 alt={place.name}
 
               />
-
+              <Rating size="small" value={Number{place.rating}} />
             </Paper>
         }
     </div>
   ))
 }
 
-      </GoogleMapReact >
-      </div >
-      );
-    };
+    </GoogleMapReact >
+    </div >
+    );
+  };
 
 export default Map;

@@ -4,7 +4,7 @@ import useStyles from './styles';
 import { CircularProgress, Grid, Typography, InputLabel, MenuItem, FormControl, Select } from '@material-ui/core';
 import PlaceDetails from '../PlaceDetails/PlaceDetails';
 
-const List = ({ places }) => {
+const List = ({ places, onChildClicked }) => {
   const classes = useStyles();
   const [type, setType] = useState('Restaurants');
   const [rating, setRating] = useState('Rating');

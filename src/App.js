@@ -7,6 +7,8 @@ import { getPlacesData } from './api/index';
 
 const App = () => {
   const [places, setPlaces] = useState([]);
+  const [childClicked, setChildClicked] = useState(null);
+
 
   const [coords, setCoords] = useState({});
   const [bounds, setBounds] = useState({});
@@ -18,11 +20,11 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-      getPlacesData(bounds.sw, bounds.ne)
+    getPlacesData(bounds.sw, bounds.ne)
       .then((data) => {
         setPlaces(data);
       });
-  }, [ coords, bounds ]);
+  }, [coords, bounds]);
 
   return (
     <>  {/* jsx fragment */}
@@ -31,7 +33,8 @@ const App = () => {
       <Grid container spacing={3} style={{ width: '100' }}>
         <Grid item xs={12} md={4}>
           <List
-          places={places}
+            places={places}
+            childClicked={childClicked}
           />
         </Grid>
         <Grid item xs={12} md={8}>
@@ -40,6 +43,7 @@ const App = () => {
             setBounds={setBounds}
             coords={coords}
             places={places}
+            setChildClicked={setChildClicked}
           />
         </Grid>
       </Grid>
