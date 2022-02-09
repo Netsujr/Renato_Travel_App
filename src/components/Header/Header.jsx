@@ -1,13 +1,14 @@
-/*global google*/
+/* eslint-disable no-undef */
 import React, { useState } from 'react';
-import { Autocomplete } from '@react-google-maps/api';
+/* global google */
+// import { Autocomplete } from '@react-google-maps/api';
 import { AppBar, Toolbar, Typography, InputBase, Box } from '@material-ui/core';
 import SearchIcon from '@material-ui/icons/Search';
 
 import useStyles from './styles';
 const Header = ({ setCoords }) => {
   const classes = useStyles();
-  const [autocomplete, setAutocomplete] = useState(null);
+  // const [autocomplete, setAutocomplete] = useState({});
 
   const onLoad = (autoC) => setAutocomplete(autoC);
 
@@ -15,7 +16,7 @@ const Header = ({ setCoords }) => {
     const lat = autocomplete.getPlace().geometry.location.lat();
     const lng = autocomplete.getPlace().geometry.location.lng();
 
-    setCoords({ lat, lng })
+    setCoords({ lat, lng });
   };
 
   return (
@@ -28,14 +29,14 @@ const Header = ({ setCoords }) => {
           <Typography variant="h6" className={classes.title}>
             Explore new places to visit
           </Typography>
-          <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
+          {/* <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
             <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
               </div>
               <InputBase placeholder='Search...' classes={{ root: classes.inputRoot, input: classes.inputInput }} />
             </div>
-          </Autocomplete>
+          </Autocomplete> */}
         </Box>
       </Toolbar>
     </AppBar>
