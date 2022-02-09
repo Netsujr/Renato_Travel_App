@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { CssBaseline, Grid } from '@material-ui/core';
 
-import { getPlacesData } from './api';
+import { getPlacesData, getWeatherData } from './api';
 import Header from './components/Header/Header';
 import List from './components/List/List';
 import Map from './components/Map/Map';
@@ -31,14 +31,14 @@ const App = () => {
     const filtered = places.filter((place) => Number(place.rating) > rating);
 
     setFilteredPlaces(filtered);
-  }, [rating]);
+  }, [rating, places]);
 
   useEffect(() => {
     if (bounds) {
       setIsLoading(true);
 
-      // getWeatherData(coords.lat, coords.lng)
-      //   .then((data) => setWeatherData(data));
+      getWeatherData(coords.lat, coords.lng)
+        .then((data) => setWeatherData(data));
 
       getPlacesData(type, bounds.sw, bounds.ne)
         .then((data) => {
