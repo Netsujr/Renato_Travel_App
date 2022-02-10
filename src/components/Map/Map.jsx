@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useState } from 'react';
+import React from 'react';
 import GoogleMapReact from 'google-map-react';
-import { Paper, Typography, useMediaQuery } from '@material-ui/core';
+import { Typography, useMediaQuery } from '@material-ui/core';
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import Rating from '@material-ui/lab/Rating';
 
@@ -40,13 +40,14 @@ const Map = ({ coords, places, setCoords, setBounds, setChildClicked, weatherDat
             {!matches
               ? <LocationOnOutlinedIcon color="primary" fontSize="large" />
               : (
-                <Card>
-                  <Typography className={classes.typography} style={{ fontSize: '.7rem' }} gutterBottom> {place.name}</Typography>
-                  <Rating name="read-only" size="small" value={Number(place.rating)} readOnly />
-                  <img
-                    src={place.photo ? place.photo.images.large.url : 'https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg'}
-                  />
-                </Card>
+                <LocationOnOutlinedIcon fontSize="large" />
+                // <Card>
+                //   <Typography className={classes.typography} style={{ fontSize: '.7rem' }} gutterBottom> {place.name}</Typography>
+                //   <Rating name="read-only" size="small" value={Number(place.rating)} readOnly />
+                //   <img
+                //     src={place.photo ? place.photo.images.large.url : 'https://www.foodserviceandhospitality.com/wp-content/uploads/2016/09/Restaurant-Placeholder-001.jpg'}
+                //   />
+                // </Card>
               )}
           </div>
         ))}
