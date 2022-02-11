@@ -22,20 +22,24 @@ const PlaceDetails = ({ place, selected, refProp }) => {
         title={place.name}
       />
       <CardContent>
-        <Box display="flex" justifyContent="space-between" alignItems='flex-start'>
-          <Typography gutterBottom variant="h6">{place.name}</Typography>
-          <Box display="flex" flexDirection='column' marginTop='.2em'>
-            <Rating value={Number(place.rating)} readOnly />
-            <Typography style={{ marginLeft: '.35em' }} gutterBottom variant="subtitle2">{place.num_reviews} reviews</Typography>
+        <NameAndRating>
+          <Box display="flex" flexDirection='column' alignItems='flex-start'>
+            <h3>{place.name}</h3>
+            <Box display="flex" flexDirection='column'>
+              <h5>{place.num_reviews} reviews</h5>
+              <Rating style={{marginLeft: '-5px'}} value={Number(place.rating)} readOnly />
+            </Box>
           </Box>
-        </Box>
-        <Box display="flex" alignItems='center'>
-          <Typography variant="subtitle1">Price: </Typography>
-          <Typography style={{ margin: '0 .35em' }} gutterBottom variant="subtitle1">{place.price_level ? place.price_level : "No Price Info"}</Typography>
-        </Box>
-        {place?.cuisine?.map(({ name }) => (
-          <Chip key={name} size="small" label={name} className={classes.chip} />
-        ))}
+          <Box display="flex" flexDirection='column' alignItems='flex-end'>
+            <h3>Price: </h3>
+            <p style={{ margin: '0 .35em' }}>{place.price_level ? place.price_level : "No Price Info"}</p>
+            <ChipContainer>
+              {place?.cuisine?.map(({ name }) => (
+                <Chip key={name} size="small" label={name} className={classes.chip} />
+              ))}
+            </ChipContainer>
+          </Box>
+        </NameAndRating>
 
         {place?.awards?.map((award) => (
           <Box my={1} display="flex" justifyContent={'space-between'}>
@@ -73,4 +77,26 @@ export default PlaceDetails;
 const CardContainer = styled.div`
           box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
           border: 1px solid #e0e0e0;
+
+          h3 {
+            margin: 2px 0px;
+          }
+
+          h5 {
+            margin: 0;
+          }
+
+          `;
+const NameAndRating = styled.div`
+
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+          margin-bottom: 1em;
+          `;
+
+const ChipContainer = styled.div`
+          display: flex;
+          flex-wrap: wrap;
+          margin-bottom: 1em;
           `;
