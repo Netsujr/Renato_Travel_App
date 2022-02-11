@@ -4,19 +4,16 @@ import GoogleMapReact from 'google-map-react';
 import { Typography, useMediaQuery } from '@material-ui/core';
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import Rating from '@material-ui/lab/Rating';
-
 import mapStyles from './mapStyles';
-import useStyles from './styles.js';
 import styled from 'styled-components';
 
 const Map = ({ coords, places, setCoords, setBounds, setChildClicked, weatherData }) => {
   const matches = useMediaQuery('(min-width:600px)');
-  const classes = useStyles();
 
 
   return (
 
-    <div className={classes.mapContainer}>
+    <MapContainer>
       <GoogleMapReact
         bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
         defaultCenter={coords}
@@ -31,8 +28,7 @@ const Map = ({ coords, places, setCoords, setBounds, setChildClicked, weatherDat
         onChildClick={(child) => setChildClicked(child)}
       >
         {places.length && places.map((place, i) => (
-          <div
-            className={classes.markerContainer}
+          <MarkerContainer
             lat={Number(place.latitude)}
             lng={Number(place.longitude)}
             key={i}
@@ -49,7 +45,7 @@ const Map = ({ coords, places, setCoords, setBounds, setChildClicked, weatherDat
                 //   />
                 // </Card>
               )}
-          </div>
+          </MarkerContainer>
         ))}
         {weatherData?.list?.length && weatherData.list.map((data, i) => (
           <div key={i} lat={data.coord.lat} lng={data.coord.lon}>
@@ -57,9 +53,29 @@ const Map = ({ coords, places, setCoords, setBounds, setChildClicked, weatherDat
           </div>
         ))}
       </GoogleMapReact>
-    </div>
+    </MapContainer>
   );
 };
+
+
+export default Map;
+
+const MapContainer = styled.div`
+          height: 90vh;
+          width: 100%;
+          `;
+
+const MarkerContainer = styled.div`
+          position: 'absolute';
+          transform: 'translate(-50%, -50%)';
+          z-index: 1;
+
+          &:hover: {
+            z-index: 2;
+            color: red;
+          }
+`;
+
 
 const Card = styled.div`
           padding: 10px;
@@ -78,5 +94,3 @@ const Card = styled.div`
             object-fit: cover;
           }
           `;
-
-export default Map;

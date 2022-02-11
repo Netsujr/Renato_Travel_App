@@ -75,7 +75,7 @@ const App = () => {
             setRating={setRating}
           />
         </Grid>
-        <Grid item xs={12} md={6} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+        <Grid item xs={12} md={6} style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'sticky', top: '5px' }}>
           <Map
             setChildClicked={setChildClicked}
             setBounds={setBounds}
