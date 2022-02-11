@@ -1,8 +1,8 @@
 /* eslint-disable no-undef */
 import React, { useState } from 'react';
-import { Autocomplete } from '@react-google-maps/api';
+// import { Autocomplete } from '@react-google-maps/api';
 import { AppBar, Toolbar, Typography, InputBase, Box } from '@material-ui/core';
-import SearchIcon from '@material-ui/icons/Search';
+// import SearchIcon from '@material-ui/icons/Search';
 
 import useStyles from './styles';
 const Header = ({ setCoords }) => {
@@ -25,9 +25,6 @@ const Header = ({ setCoords }) => {
           Travel Advisor
         </Typography>
         <Box display="flex">
-          <Typography variant="h6" className={classes.title}>
-            Explore new places to visit
-          </Typography>
           {/* <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}> */}
             {/* <div className={classes.search}>
               <div className={classes.searchIcon}>

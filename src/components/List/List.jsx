@@ -1,7 +1,8 @@
 import React, { useState, useEffect, createRef } from 'react';
-import { CircularProgress, Grid, Typography, InputLabel, MenuItem, FormControl, Select } from '@material-ui/core';
+import { CircularProgress, Grid, InputLabel, MenuItem, FormControl, Select } from '@material-ui/core';
 
 import PlaceDetails from '../PlaceDetails/PlaceDetails';
+import styled from 'styled-components';
 
 import useStyles from './styles';
 
@@ -15,11 +16,11 @@ const List = ({ places, childClicked, isLoading, type, setType, rating, setRatin
   }, [places]);
 
   return (
-    <div className={classes.container}>
-      <Typography variant="h6">Restaurants, Hotels & Attractions</Typography>
+    <ListContainer>
+      <h2>Restaurants, Hotels & Attractions</h2>
       {isLoading ? (
         <div className={classes.loading}>
-          <CircularProgress size="5rem" />
+          <CircularProgress size="4rem" />
         </div>
       ) : (
         <>
@@ -53,8 +54,17 @@ const List = ({ places, childClicked, isLoading, type, setType, rating, setRatin
           </Grid>
         </>
       )}
-    </div>
+    </ListContainer>
   );
 };
 
 export default List;
+
+
+const ListContainer = styled.div`
+        padding: 2rem;
+        h2 {
+          font-size: 1.5rem;
+          font-weight: bold;
+          margin-bottom: .5rem;
+          }`;
