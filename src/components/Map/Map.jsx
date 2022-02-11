@@ -69,40 +69,40 @@ const Map = ({ coords, places, setCoords, setBounds, setChildClicked, weatherDat
 export default Map;
 
 const MapContainer = styled.div`
-          height: 90vh;
-          width: 100%;
-          `;
+        height: 90vh;
+        width: 100%;
+        `;
 
 const MarkerContainer = styled.div`
-          position: 'absolute';
-          transform: 'translate(-50%, -50%)';
-          z-index: 1;
+        position: 'absolute';
+        transform: 'translate(-50%, -50%)';
+        z-index: 1;
 
-          &:hover: {
-            z-index: 2;
-            color: red;
-          }
-          `;
+        &:hover: {
+          z-index: 2;
+          color: red;
+        }
+        `;
 
 
 const Card = styled.div`
-          padding: 10px;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          min-width: 10vw;
-          background: #fff;
-          box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-          border-radius: 5px;
-          font-size: .2rem;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-width: 10vw;
+        background: #fff;
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+        border-radius: 5px;
+        font-size: .2rem;
 
-          img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-          }
+        img {
+          width: 100%;
+          height: auto;
+          object-fit: cover;
+        }
 
-          .picture {
-            display: flex;
-          }
-          `;
+        p{
+          margin: 0;
+        }
+        `;

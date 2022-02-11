@@ -22,15 +22,15 @@ const PlaceDetails = ({ place, selected, refProp }) => {
         title={place.name}
       />
       <CardContent>
-        <NameAndRating>
-          <Box display="flex" flexDirection='column' alignItems='flex-start'>
+        <NameRatingPrice>
+          <NameRating>
             <h3>{place.name}</h3>
             <Box display="flex" flexDirection='column'>
               <h5>{place.num_reviews} reviews</h5>
-              <Rating style={{marginLeft: '-5px'}} value={Number(place.rating)} readOnly />
+              <Rating style={{ marginLeft: '-5px' }} value={Number(place.rating)} readOnly />
             </Box>
-          </Box>
-          <Box display="flex" flexDirection='column' alignItems='flex-end'>
+          </NameRating>
+          <PriceChip>
             <h3>Price: </h3>
             <p style={{ margin: '0 .35em' }}>{place.price_level ? place.price_level : "No Price Info"}</p>
             <ChipContainer>
@@ -38,35 +38,32 @@ const PlaceDetails = ({ place, selected, refProp }) => {
                 <Chip key={name} size="small" label={name} className={classes.chip} />
               ))}
             </ChipContainer>
-          </Box>
-        </NameAndRating>
-
-        {place?.awards?.map((award) => (
-          <Box my={1} display="flex" justifyContent={'space-between'}>
-            <img src={award.images.small} alt={award.display_name} />
-            <Typography variant="subtitle2" color="textSecondary">{award.display_name}</Typography>
-          </Box>
-        ))}
-        {place?.address && (
-          <Typography gutterBottom variant="body2" color="textSecondary" className={classes.subtitle}>
-            <LocationOnIcon /> {place.address}
-          </Typography>
-        )}
-        <Box display="flex" justifyContent="space-between" alignItems='flex-end'>
-          {place?.phone && (
-            <Typography gutterBottom variant="body2" color="textSecondary" className={classes.spacing}>
-              <PhoneIcon /> {place.phone}
-            </Typography>
-          )}
-          <Box display="flex">
-            <Button size="small" color="primary" style={{ minWidth: 'fit-content' }} onClick={() => window.open(place.web_url, '_blank')}>
-              <InfoIcon />
-            </Button>
-            <Button size="small" color="primary" style={{ minWidth: 'fit-content' }} onClick={() => window.open(place.website, '_blank')}>
-              <LanguageIcon />
-            </Button>
-          </Box>
-        </Box>
+          </PriceChip>
+        </NameRatingPrice>
+        <LocationPhoneLinks>
+          <Location>
+            {place?.address && (
+              <p className={classes.subtitle}>
+                <LocationOnIcon /> {place.address}
+              </p>
+            )}
+          </Location>
+          <PhoneLinks>
+            <Box display="flex">
+              <Button size="small" color="primary" style={{ minWidth: 'fit-content' }} onClick={() => window.open(place.web_url, '_blank')}>
+                <InfoIcon />
+              </Button>
+              <Button size="small" color="primary" style={{ minWidth: 'fit-content' }} onClick={() => window.open(place.website, '_blank')}>
+                <LanguageIcon />
+              </Button>
+            </Box>
+            {place?.phone && (
+              <p className={classes.spacing}>
+                <PhoneIcon /> {place.phone}
+              </p>
+            )}
+          </PhoneLinks>
+        </LocationPhoneLinks>
       </CardContent>
     </CardContainer >
   );
@@ -75,28 +72,68 @@ const PlaceDetails = ({ place, selected, refProp }) => {
 export default PlaceDetails;
 
 const CardContainer = styled.div`
-          box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
-          border: 1px solid #e0e0e0;
+        box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+        border: 1px solid #e0e0e0;
 
-          h3 {
-            margin: 2px 0px;
-          }
+        h3 {
+          margin: 2px 0px;
+        }
 
-          h5 {
-            margin: 0;
-          }
+        h5 {
+          margin: 0;
+        }
 
-          `;
-const NameAndRating = styled.div`
+        `;
+const NameRatingPrice = styled.div`
 
-          display: flex;
-          justify-content: space-between;
-          align-items: flex-start;
-          margin-bottom: 1em;
-          `;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: .5em;
+        `;
+
+const NameRating = styled.div`
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin-left: 8px;
+        `;
+
+const PriceChip = styled.div`
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        `;
+
 
 const ChipContainer = styled.div`
-          display: flex;
-          flex-wrap: wrap;
-          margin-bottom: 1em;
-          `;
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 1em;
+        justify-content: flex-end;
+        `;
+
+const LocationPhoneLinks = styled.div`
+        display: flex;
+        justify-content: space-between;
+        `;
+
+const Location = styled.div`
+        display: flex;
+        max-width: 50%;
+
+        p {
+          margin: 0;
+        }
+        `;
+
+const PhoneLinks = styled.div`
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: flex-end;
+
+        p {
+          margin: 0;
+        }
+        `;
