@@ -1,6 +1,7 @@
 /* eslint-disable no-undef */
 import React from 'react';
-import { AppBar, Toolbar } from '@material-ui/core';
+import { AppBar } from '@material-ui/core';
+import styled from 'styled-components';
 // import { Autocomplete } from '@react-google-maps/api';
 // import SearchIcon from '@material-ui/icons/Search';
 
@@ -10,13 +11,18 @@ const Header = ({ setCoords }) => {
 
   return (
     <AppBar position="static">
-      <Toolbar className={classes.toolbar}>
+      <ToolBar className={classes.toolbar}>
         <h1 className={classes.title}>
           Travel Advisor
         </h1>
-      </Toolbar>
+      </ToolBar>
     </AppBar>
   );
 };
 
 export default Header;
+
+const ToolBar = styled.div`
+  background-color: #fff;
+  display: flex;
+  `;
