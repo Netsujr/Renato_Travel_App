@@ -14,6 +14,7 @@
     "autocomplete.react": "^0.0.3",
     "axios": "^0.25.0",
     "google-map-react": "^2.1.10",
+    "netlify-cli": "^9.4.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-google-autocomplete": "^2.6.1",

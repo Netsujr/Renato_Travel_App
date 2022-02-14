@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/alt-text */
-import React, { useState } from 'react';
+import React from 'react';
 import GoogleMapReact from 'google-map-react';
 import { useMediaQuery } from '@material-ui/core';
 import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
@@ -9,12 +9,12 @@ import styled from 'styled-components';
 
 const Map = ({ coords, places, setCoords, setBounds, setChildClicked, weatherData }) => {
   const matches = useMediaQuery('(min-width:700px)');
-  const [hover, setHover] = useState({});
+  // const [hover, setHover] = useState({});
 
-  const handleHover = ((e) => {
-    setHover(e);
-    console.log(e);
-  });
+  // const handleHover = ((e) => {
+  //   setHover(e);
+  //   console.log(e);
+  // });
 
 
 
