@@ -21,7 +21,7 @@ const Header = ({ setCoords }) => {
 export default Header;
 
 const ToolBar = styled.div`
-  background-color: #d6fff8;
+  background-color: #ffebd6;
   display: flex;
 
   h1 {
