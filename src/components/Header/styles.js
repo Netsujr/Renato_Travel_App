@@ -6,5 +6,6 @@ export default makeStyles((theme) => ({
     [theme.breakpoints.up('sm')]: {
       display: 'block',
     },
+    margin: '10px auto',
   }
 }));
